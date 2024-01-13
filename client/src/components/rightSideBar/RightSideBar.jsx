@@ -1,9 +1,14 @@
 import React from 'react'
 import "./RightSideBar.css"
+import Widget from './Widget'
+import WidgetTags from './WidgetTags'
 
 function RightSideBar() {
   return (
-    <div>RightSideBar</div>
+    <aside className='right-sidebar'>
+      <Widget />
+      <WidgetTags />
+    </aside>
   )
 }
 
