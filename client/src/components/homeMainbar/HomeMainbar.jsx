@@ -6,7 +6,7 @@ import QuestionList from './QuestionList';
 function HomeMainbar() {
   var questionList = [
     {
-      _id: 1,
+      _id: "1",
       upVotes: 1,
       downVotes: 3,
       noOfAnswers: 2,
@@ -24,7 +24,7 @@ function HomeMainbar() {
       }]
     },
     {
-      _id: 2,
+      _id: "2",
       upVotes: 1,
       downVotes: 3,
       noOfAnswers: 2,
@@ -42,7 +42,7 @@ function HomeMainbar() {
       }]
     },
     {
-      _id: 3,
+      _id: "3",
       upVotes: 1,
       downVotes: 3,
       noOfAnswers: 0,
