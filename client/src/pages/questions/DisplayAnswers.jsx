@@ -8,7 +8,7 @@ function DisplayAnswers({ question }) {
         <div>
             {
                 question.answer.map((ans) => {
-                    return <div className="display-ans" key={ans.userId}>
+                    return <div className="display-ans" key={ans.answeredOn}>
                         <p>{ans.answerBody}</p>
                         <div className="question-actions-user">
                             <div>

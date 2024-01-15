@@ -6,7 +6,7 @@ function Questions({ question }) {
     return (
         <div className="display-question-container">
             <div className="display-votes-ans">
-                <p>{question.upVotes}</p>
+                <p>{question.upVotes.length - question.downVotes.length}</p>
                 <p>Votes</p>
             </div>
             <div className="display-votes-ans">

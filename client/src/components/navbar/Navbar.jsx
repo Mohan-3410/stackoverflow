@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Navbar.css"
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import search from '../../assets/search-solid.svg'
 import Avatar from '../avatar/Avatar'
+import { useDispatch, useSelector } from 'react-redux'
+import { login, setCurrentUser } from '../../redux/slices/authSlice'
 function Navbar() {
-  var User = null;
+  const dispatch = useDispatch();
+  const User = useSelector(state => state.authReducer.currentUser)
+  const currentUser = JSON.parse(localStorage.getItem('Profile'));
+
+  useEffect(() => {
+    dispatch(setCurrentUser(currentUser))
+  }, [dispatch]);
 
   return (
     <nav className="main-nav">
@@ -38,7 +46,7 @@ function Navbar() {
                     to="/"
                     style={{ color: "white", textDecoration: "none" }}
                   >
-                    M
+                    {User.result.name.charAt(0).toUpperCase()}
                   </Link>
                 </Avatar>
                 <button className='nav-item nav-links'>Log out</button>

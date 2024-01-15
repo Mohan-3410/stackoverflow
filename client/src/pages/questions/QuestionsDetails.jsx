@@ -1,83 +1,108 @@
-import React from 'react'
-import { Link, useParams } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import upvote from "../../assets/sort-up.svg";
 import downvote from "../../assets/sort-down.svg";
 import "./Questions.css"
 import Avatar from '../../components/avatar/Avatar';
 import DisplayAnswers from './DisplayAnswers';
+import { useDispatch, useSelector } from 'react-redux';
+import { postAnswer } from '../../redux/slices/questionSlice';
 
 function QuestionsDetails() {
   const { id } = useParams();
-  var questionList = [
-    {
-      _id: "1",
-      upVotes: 1,
-      downVotes: 3,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["jave", "node js", "react js", "mongoose"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2
-      }]
-    },
-    {
-      _id: "2",
-      upVotes: 1,
-      downVotes: 3,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["jave", "node js", "react js", "mongoose"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2
-      }]
-    },
-    {
-      _id: "3",
-      upVotes: 1,
-      downVotes: 3,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["jave", "node js", "react js", "mongoose"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2
-      }]
-    },
-  ];
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { questionList } = useSelector(state => state.questionReducer)
+  const User = useSelector(state => state.authReducer.currentUser)
+  const [ans, setAns] = useState("");
+  // var questionList = [
+  //   {
+  //     _id: "1",
+  //     upVotes: 1,
+  //     downVotes: 3,
+  //     noOfAnswers: 2,
+  //     questionTitle: "What is a function?",
+  //     questionBody: "It meant to be",
+  //     questionTags: ["jave", "node js", "react js", "mongoose"],
+  //     userPosted: "mano",
+  //     askedOn: "jan 1",
+  //     userId: 1,
+  //     answer: [{
+  //       answerBody: "Answer",
+  //       userAnswered: 'kumar',
+  //       answeredOn: "jan 2",
+  //       userId: 2
+  //     }]
+  //   },
+  //   {
+  //     _id: "2",
+  //     upVotes: 1,
+  //     downVotes: 3,
+  //     noOfAnswers: 2,
+  //     questionTitle: "What is a function?",
+  //     questionBody: "It meant to be",
+  //     questionTags: ["jave", "node js", "react js", "mongoose"],
+  //     userPosted: "mano",
+  //     askedOn: "jan 1",
+  //     userId: 1,
+  //     answer: [{
+  //       answerBody: "Answer",
+  //       userAnswered: 'kumar',
+  //       answeredOn: "jan 2",
+  //       userId: 2
+  //     }]
+  //   },
+  //   {
+  //     _id: "3",
+  //     upVotes: 1,
+  //     downVotes: 3,
+  //     noOfAnswers: 0,
+  //     questionTitle: "What is a function?",
+  //     questionBody: "It meant to be",
+  //     questionTags: ["jave", "node js", "react js", "mongoose"],
+  //     userPosted: "mano",
+  //     askedOn: "jan 1",
+  //     userId: 1,
+  //     answer: [{
+  //       answerBody: "Answer",
+  //       userAnswered: 'kumar',
+  //       answeredOn: "jan 2",
+  //       userId: 2
+  //     }]
+  //   },
+  // ];
+  const handlePostAns = (e, answerLength) => {
+    e.preventDefault();
+    if (User === null) {
+      alert("Login or Signup to answer a question");
+      navigate('/auth')
+    }
+    else {
+      if (ans === "") {
+        alert("Enter an answer before submitting");
+      }
+      else {
+        console.log("i am inside")
+        dispatch(postAnswer({ id, noOfAnswers: answerLength + 1, answerBody: ans, userAnswered: User.result.name }))
+      }
+    }
+    setAns("")
+  }
+
 
   return (
     <div className='question-details-page'>
       {
         questionList === null ? <h1>Loading...</h1> : <>
           {
-            questionList.filter(question => question._id === id).map(question => {
+            questionList?.filter(question => question._id === id).map(question => {
               return <div key={question._id}>
                 <section className='question-details-container'>
                   <h1>{question.questionTitle}</h1>
                   <div className="question-details-container-2">
                     <div className="question-votes">
                       <img src={upvote} alt="upvote" width="18" className='votes-icon' />
-                      <p>{question.upVotes - question.downVotes}</p>
+                      <p>{question.upVotes.length - question.downVotes.length}</p>
                       <img src={downvote} alt="downvote" width="18" className='votes-icon' />
                     </div>
                     <div style={{ width: "100%" }}>
@@ -108,7 +133,7 @@ function QuestionsDetails() {
                 {
                   question.noOfAnswers !== 0 && (
                     <section>
-                      <h3>{question.noOfAnswers} answers</h3>
+                      <h3>{question.noOfAnswers} Answers</h3>
                       <DisplayAnswers key={question._id} question={question} />
                     </section>
                   )
@@ -116,8 +141,8 @@ function QuestionsDetails() {
 
                 <section className='post-ans-container'>
                   <h3>Your Answer</h3>
-                  <form>
-                    <textarea name="" id="" cols="30" rows="10" />
+                  <form onSubmit={(e) => handlePostAns(e, question.answer.length)}>
+                    <textarea value={ans} name="" id="" cols="30" rows="10" onChange={e => setAns(e.target.value)} />
                     <input type="submit" className='post-ans-btn' value="Post Your Answer" />
                   </form>
                   <p>
