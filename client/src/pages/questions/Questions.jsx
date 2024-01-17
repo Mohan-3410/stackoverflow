@@ -1,8 +1,8 @@
 import React from 'react'
 import "../../App.css"
-import LeftSideBar from '../../components/leftSidebar/LeftSidebar'
 import RightSideBar from '../../components/rightSideBar/RightSideBar'
 import HomeMainbar from '../../components/homeMainbar/HomeMainbar'
+import LeftSideBar from '../../components/leftSideBar/LeftSideBar'
 
 function Questions({ slideIn }) {
   return (

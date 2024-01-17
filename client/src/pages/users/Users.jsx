@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Users.css";
 import UsersList from "./UsersList";
-import LeftSideBar from "../../components/leftSidebar/LeftSidebar";
+import LeftSideBar from "../../components/leftSideBar/LeftSideBar";
 
 const Users = ({ slideIn, handleSlideIn }) => {
     return (

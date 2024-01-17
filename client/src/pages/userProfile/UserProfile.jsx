@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import LeftSideBar from '../../components/leftSidebar/LeftSidebar';
+import LeftSideBar from '../../components/leftSideBar/LeftSideBar';
 import Avatar from '../../components/avatar/Avatar';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
