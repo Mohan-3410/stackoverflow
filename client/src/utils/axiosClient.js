@@ -6,3 +6,10 @@ export const axiosClient = axios.create({
     baseURL,
     withCredentials: true
 })
+
+axiosClient.interceptors.request.use((req) => {
+    if (localStorage.getItem('Profile')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('Profile')).token}`;
+    }
+    return req;
+})

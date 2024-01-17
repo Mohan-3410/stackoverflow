@@ -10,7 +10,7 @@ export const login = createAsyncThunk("auth/login", async ({ email, password, na
         navigate("/")
         return response.data;
     } catch (error) {
-        return console.log({ error: error.message })
+        return console.log({ error })
     }
 })
 
@@ -26,15 +26,34 @@ export const signup = createAsyncThunk("auth/signup", async ({ name, email, pass
     }
 })
 
+export const fetchAllUsers = createAsyncThunk("auth/getAllUsers", async () => {
+    const { data } = await axiosClient.get('/auth/getAllUsers');
+    return data;
+})
+
+export const updateUser = createAsyncThunk("auth/update/:id", async ({ id, name, about, tags }, thunkAPI) => {
+    try {
+        const { data } = await axiosClient.patch(`/auth/update/${id}`, { name, about, tags });
+        thunkAPI.dispatch(updateCurrentUser(data))
+        return data;
+    } catch (e) {
+        console.error("Error: " + e.message);
+    }
+})
+
 const authSlicer = createSlice({
     name: 'authSlicer',
     initialState: {
         auth: null,
         currentUser: null,
+        users: []
     },
     reducers: {
         setCurrentUser: (state, action) => {
             state.currentUser = action.payload
+        },
+        updateCurrentUser: (state, action) => {
+            state.currentUser = { ...state.currentUser, result: action.payload }
         }
     },
     extraReducers: (builder) => {
@@ -44,8 +63,14 @@ const authSlicer = createSlice({
         builder.addCase(signup.fulfilled, (state, action) => {
             state.auth = action.payload;
         })
+        builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
+            state.users = action.payload;
+        })
+        builder.addCase(updateUser.fulfilled, (state, action) => {
+            state.users = state.users.map(user => user._id === action.payload._id ? action.payload : state.users)
+        })
     }
 })
 
-export const { setCurrentUser } = authSlicer.actions;
+export const { setCurrentUser, updateCurrentUser } = authSlicer.actions;
 export default authSlicer.reducer;

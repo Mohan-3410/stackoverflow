@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../models/User')
+const User = require('../models/User');
+const { default: mongoose } = require('mongoose');
 
 const signupController = async (req, res) => {
     const { name, email, password } = req.body;
@@ -50,7 +51,35 @@ const loginController = async (req, res) => {
     }
 }
 
+const getAllUsersController = async (req, res) => {
+    try {
+        const allUsers = await User.find();
+        const allUserDetails = [];
+        allUsers.forEach(users => {
+            allUserDetails.push({ _id: users.id, name: users.name, about: users.about, tags: users.tags, joinedOn: users.joinedOn })
+        })
+        return res.status(200).json(allUserDetails)
+    } catch (error) {
+        return res.status(400).json({ message: error.message })
+    }
+}
+
+const updateUserController = async (req, res) => {
+    const { id: _id } = req.params;
+    const { name, about, tags } = req.body;
+    try {
+        if (!mongoose.Types.ObjectId.isValid(_id)) {
+            return res.status(404).send('User unavailable');
+        }
+        const updateProfile = await User.findByIdAndUpdate(_id, { $set: { "name": name, "about": about, "tags": tags } }, { new: true });
+        return res.status(200).json(updateProfile)
+    } catch (e) {
+        return res.status(405).json({ message: e.message })
+    }
+}
 module.exports = {
+    updateUserController,
+    getAllUsersController,
     signupController,
     loginController
 }

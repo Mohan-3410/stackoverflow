@@ -14,9 +14,14 @@ const app = express();
 app.use(morgan('common'))
 app.use(express.json({ limit: '30mb', extended: true }));
 app.use(express.urlencoded({ limit: '30mb', extended: true }));
+let origin = 'http://localhost:5173';
+console.log("here env", process.env.NODE_ENV)
+if (process.env.NODE_ENV === 'production') {
+    origin = process.env.CORS_ORIGIN
+}
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5173'
+    origin
 }))
 
 app.use('/auth', authRouter)

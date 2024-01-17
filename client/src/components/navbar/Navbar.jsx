@@ -1,17 +1,31 @@
 import React, { useEffect } from 'react'
 import "./Navbar.css"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import search from '../../assets/search-solid.svg'
 import Avatar from '../avatar/Avatar'
+import { jwtDecode } from "jwt-decode"
 import { useDispatch, useSelector } from 'react-redux'
 import { login, setCurrentUser } from '../../redux/slices/authSlice'
 function Navbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const User = useSelector(state => state.authReducer.currentUser)
   const currentUser = JSON.parse(localStorage.getItem('Profile'));
 
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/')
+    dispatch(setCurrentUser(null))
+  }
   useEffect(() => {
+    const token = User?.token;
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        handleLogout();
+      }
+    }
     dispatch(setCurrentUser(currentUser))
   }, [dispatch]);
 
@@ -49,7 +63,7 @@ function Navbar() {
                     {User.result.name.charAt(0).toUpperCase()}
                   </Link>
                 </Avatar>
-                <button className='nav-item nav-links'>Log out</button>
+                <button className='nav-item nav-links' onClick={handleLogout}>Log out</button>
               </>
           }
         </div>

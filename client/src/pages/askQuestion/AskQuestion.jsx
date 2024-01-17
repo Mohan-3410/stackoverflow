@@ -14,7 +14,7 @@ function AskQuestion() {
   const User = useSelector(state => state.authReducer.currentUser)
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, navigate }))
+    dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User.result._id, navigate }))
   }
 
   return (
