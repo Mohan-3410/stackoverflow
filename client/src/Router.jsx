@@ -30,12 +30,12 @@ function AllRoutes() {
         <Route path='/Tags' element={<Tags />} />
         <Route path='/Users' element={<Users />} />
         <Route path="/Users/:id" element={<UserProfile />} />
-        <Route element={<BotProtection />}>
-          <Route path="/chatbot" element={<ChatBotPage />} />
-        </Route>
         <Route path="/subscribe" element={<Elements stripe={stripePromise}><SubscriptionPlans /></Elements>} />
         <Route path="/subscription-successs/:id" element={<SubscriptionConfirmation />} />
         <Route path="/subscription-failed" element={<SubscriptionFailed />} />
+      </Route>
+      <Route element={<BotProtection />}>
+        <Route path="/chatbot" element={<ChatBotPage />} />
       </Route>
     </Routes>
   )
