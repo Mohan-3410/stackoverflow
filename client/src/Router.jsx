@@ -11,13 +11,11 @@ import UserProfile from './pages/userProfile/UserProfile'
 import ChatBotPage from './pages/chatbot/ChatbotPage'
 import SubscriptionPlans from './pages/subscriptionPlan/SubscriptionPlan'
 import SubscriptionConfirmation from './components/subscriptionConfirmation/SubscriptionConfirmation'
-// import PaymentGateway from './components/paymentGateway/PaymentGateway'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import SubscriptionFailed from './components/subscriptionConfirmation/SubscriptionFailed'
 import RequireUser from './components/RequireUser'
 import BotProtection from './components/BotProtection'
-
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 function AllRoutes() {
 
