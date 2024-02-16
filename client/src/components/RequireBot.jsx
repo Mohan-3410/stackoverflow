@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom';
 
-function BotProtection() {
+function RequireBot() {
     const user = localStorage.getItem("botuser")
     if (!user) {
         alert("Verification required")
@@ -11,4 +11,4 @@ function BotProtection() {
     );
 }
 
-export default BotProtection;
+export default RequireBot;

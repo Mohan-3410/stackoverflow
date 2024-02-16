@@ -15,6 +15,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import SubscriptionFailed from './components/subscriptionConfirmation/SubscriptionFailed'
 import RequireUser from './components/RequireUser'
+import RequireBot from './components/RequireBot'
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 function AllRoutes() {
 
@@ -29,7 +30,10 @@ function AllRoutes() {
         <Route path='/Tags' element={<Tags />} />
         <Route path='/Users' element={<Users />} />
         <Route path="/Users/:id" element={<UserProfile />} />
-        <Route path="/chatbot" element={<ChatBotPage />} />
+        <Route element={<RequireBot />}>
+          <Route path="/chatbot" element={<ChatBotPage />} />
+        </Route>
+
         <Route path="/subscribe" element={<Elements stripe={stripePromise}><SubscriptionPlans /></Elements>} />
         <Route path="/subscription-successs/:id" element={<SubscriptionConfirmation />} />
         <Route path="/subscription-failed" element={<SubscriptionFailed />} />
