@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import AllRoutes from './Router';
 import Navbar from './components/navbar/Navbar';
 import Weather from './components/weather';
@@ -21,12 +21,12 @@ function App() {
   const User = useSelector(state => state.authReducer.auth)
   return (
     <div className='App'>
-      <BrowserRouter>
+      <HashRouter>
         <Weather>
           <Navbar onClick={handleDarkMode} />
           <AllRoutes />
         </Weather>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
