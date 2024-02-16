@@ -86,8 +86,8 @@ const subscribeController = async (req, res) => {
                 },
             ],
             mode: 'payment',
-            success_url: `${origin}/subscription-successs/${plan}`,
-            cancel_url: `${origin}/subscription-failed`,
+            success_url: `${origin}/#/subscription-successs/${plan}`,
+            cancel_url: `${origin}/#/subscription-failed`,
         })
 
         return res.json({ sessionId: session.id });
