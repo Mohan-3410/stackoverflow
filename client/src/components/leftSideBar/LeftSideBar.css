@@ -1,20 +1,12 @@
 .left-sidebar {
   width: 164px;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  background-color: white;
+  box-shadow: 1px 1px 0 var(--box-shadow-dark);
   height: auto;
   min-height: 100vh;
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   box-sizing: border-box;
   font-size: 13px;
 }
-
-/* .nav-btn {
-    background-color: inherit;
-    width: 100%;
-    border: none;
-    padding: 0%;
-  } */
 
 .side-nav {
   height: auto;
@@ -34,7 +26,7 @@
 
 .side-nav-links {
   text-decoration: none;
-  color: #3a3a3a;
+  color: var(--textcolor);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -43,14 +35,33 @@
 }
 
 .side-nav-links:hover {
-  color: black;
+  color: var(--icon);
 }
 
 .active {
   font-weight: bolder;
-  color: black;
-  background-color: rgb(225, 225, 225);
-  border-right: solid 3px #ef8236;
+  color: var(--textcolor);
+  background-color: var(--nav-link-hover-bg);
+  border-right: solid 3px var(--icon);
+}
+
+.askAi {
+  position: fixed;
+  background-color: var(--primary);
+  border: 1px solid var(--box-shadow-dark);
+  color: var(--black);
+  border-radius: 1rem;
+  padding: 10px 20px;
+  margin-left: 2rem;
+  top: 90vh;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px var(--box-shadow-light),
+    -3px -3px 10px var(--box-shadow-light);
+}
+
+.askAi:hover {
+  background-color: var(--secondary);
+  color: var(--icon);
 }
 
 @media screen and (max-width: 760px) {

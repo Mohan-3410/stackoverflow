@@ -1,0 +1,62 @@
+/* styles.css */
+
+.subscription-confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.confirmation-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.confirmation-icon {
+  color: #2ecc71;
+  font-size: 64px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.back-to-home-link {
+  display: inline-block;
+  font-size: 18px;
+  color: #3498db;
+  text-decoration: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.back-to-home-link:hover {
+  text-decoration: underline;
+}

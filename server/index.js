@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const authRouter = require('./routes/authRouter')
 const questionRouter = require('./routes/questionRouter')
 const answerRouter = require('./routes/answerRouter')
+const botRouter = require('./routes/botRouter')
 const dbConnect = require('./dbConnect')
 dotenv.config({ path: "./.env" })
 
@@ -27,6 +28,7 @@ app.use(cors({
 app.use('/auth', authRouter)
 app.use('/questions', questionRouter)
 app.use('/answer', answerRouter)
+app.use('/bot', botRouter)
 app.get('/', (req, res) => {
     res.send("this is a stack overflow clone API")
 })

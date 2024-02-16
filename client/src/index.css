@@ -1,5 +1,157 @@
+:root {
+  --primary: #f1f2f3;
+  --secondary: #fdf7e2;
+  --accent: #009dff;
+  --accent_hover: #0086d8;
+  --textcolor: #3a3a3a;
+  --linkcolor: #037ecb;
+  --border: #d2d2d2;
+  --box-shadow: rgb(0 0 0 / 5%);
+  --box-shadow-light: rgb(0 0 0 / 10%);
+  --box-shadow-dark: rgba(0, 0, 0, 0.3);
+  --icon: #ef8236;
+  --nav-bg: #e7f8fe;
+  --black: #000000;
+  --nav-box-shadow: #00000033;
+  --nav-text: rgb(69, 69, 69);
+  --nav-link-hover-bg: rgb(225, 225, 225);
+  --nav-links-hover-bg: #d3e4eb;
+  --input-border: #0000003e;
+  --common-form-bg: #fff;
+  --widget-bg: #fbf3d5;
+  --widget-border: #f1e5bc;
+  --widget-tags-bg: #f8f9f9;
+  --widget-tags-border: #e3e6e8;
+  --question-details-border: rgba(0, 0, 0, 0.112);
+  --votes-icon: rgb(206, 203, 203);
+  --tags-h1: #323232;
+  --tags-bg: #e1ecf4;
+  --userdetails-border: #dbd9d9;
+  --editprofile-border: #7e7e7e;
+  --edit-hover-bg: #f5f9fc;
+  --submit-bg: #0a95ff;
+  --submit-hover-bg: #0074cc;
+  --mainbar-border: #edeff0;
+  --tags-text: #39739d;
+}
+
+.darktheme {
+  --primary: #121212;
+  --secondary: #1e1e1e;
+  --accent: #00a8e8;
+  --accent_hover: #0077a3;
+  --textcolor: #e0e0e0;
+  --linkcolor: #64b5f6;
+  --border: #424242;
+  --box-shadow: rgba(0, 0, 0, 0.05);
+  --box-shadow-light: rgba(0, 0, 0, 0.1);
+  --box-shadow-dark: #333333;
+  --icon: #ff9800;
+  --nav-bg: #0d0d0d;
+  --black: #ffffff;
+  --nav-box-shadow: #ffffff33;
+  --nav-text: #b0bec5;
+  --nav-link-hover-bg: #333333;
+  --nav-links-hover-bg: #1a1a1a;
+  --input-border: #ffffff3e;
+  --common-form-bg: #21212180;
+  --widget-bg: #2c2c2c;
+  --widget-border: #333333;
+  --widget-tags-bg: #292929;
+  --widget-tags-border: #1f1f1f;
+  --question-details-border: rgba(255, 255, 255, 0.112);
+  --votes-icon: #cfd8dc;
+  --tags-h1: #90a4ae;
+  --tags-bg: #263238;
+  --userdetails-border: #333333;
+  --editprofile-border: #c6c6c6;
+  --edit-hover-bg: #1f1f1f;
+  --submit-bg: #00695c;
+  --submit-hover-bg: #004d40;
+  --mainbar-border: #303030;
+  --tags-text: #90a4ae;
+}
+
+.cloudy {
+  --primary: #d8d8d8;
+  --secondary: #f2f2f2;
+  --accent: #7f8c8d;
+  --accent_hover: #666f70;
+  --textcolor: #555555;
+  --linkcolor: #4a90e2;
+  --border: #b0b0b0;
+  --box-shadow: rgb(0 0 0 / 5%);
+  --box-shadow-light: rgb(0 0 0 / 10%);
+  --box-shadow-dark: rgba(0, 0, 0, 0.3);
+  --icon: #a5adaf;
+  --nav-bg: #dcdcdc;
+  --black: #000000;
+  --nav-box-shadow: #00000033;
+  --nav-text: #707070;
+  --nav-link-hover-bg: #f0f0f0;
+  --nav-links-hover-bg: #d2d2d2;
+  --input-border: #7070703e;
+  --common-form-bg: #ffffff;
+  --widget-bg: #f5f5f5;
+  --widget-border: #d9d9d9;
+  --widget-tags-bg: #e6e6e6;
+  --widget-tags-border: #cccccc;
+  --question-details-border: rgba(0, 0, 0, 0.112);
+  --votes-icon: #a8a8a8;
+  --tags-h1: #333333;
+  --tags-bg: #d1d1d1;
+  --userdetails-border: #b4b4b4;
+  --editprofile-border: #8c8c8c;
+  --edit-hover-bg: #f2f2f2;
+  --submit-bg: #4a90e2;
+  --submit-hover-bg: #2a66b2;
+  --mainbar-border: #d4d4d4;
+  --tags-text: #666666;
+}
+.rain {
+  --primary: #d6e4f0;
+  --secondary: #f0f8ff;
+  --accent: #4682b4;
+  --accent_hover: #3a6682;
+  --textcolor: #4a4a4a;
+  --linkcolor: #007acc;
+  --border: #b0c4d9;
+  --box-shadow: rgb(0 0 0 / 5%);
+  --box-shadow-light: rgb(0 0 0 / 10%);
+  --box-shadow-dark: rgba(0, 0, 0, 0.3);
+  --icon: #7ec8e3;
+  --nav-bg: #cbe2f4;
+  --black: #000000;
+  --nav-box-shadow: #00000033;
+  --nav-text: #4f4f4f;
+  --nav-link-hover-bg: #ebf4fa;
+  --nav-links-hover-bg: #c4d8e9;
+  --input-border: #4f4f4f3e;
+  --common-form-bg: #ffffff;
+  --widget-bg: #d8e9f9;
+  --widget-border: #c0d4eb;
+  --widget-tags-bg: #e0eaf3;
+  --widget-tags-border: #c4d8e9;
+  --question-details-border: rgba(0, 0, 0, 0.112);
+  --votes-icon: #bebccb;
+  --tags-h1: #323232;
+  --tags-bg: #c7d7e9;
+  --userdetails-border: #cfcaca;
+  --editprofile-border: #a3a3a3;
+  --edit-hover-bg: #f2f7fa;
+  --submit-bg: #0066cc;
+  --submit-hover-bg: #004080;
+  --mainbar-border: #dfe5e7;
+  --tags-text: #2b5a80;
+}
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  background-color: var(--primary);
+  color: var(--black);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -7,6 +159,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input,
+button,
+textarea {
+  background-color: var(--common-form-bg); /* Replace with your desired color */
+  color: var(--black);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

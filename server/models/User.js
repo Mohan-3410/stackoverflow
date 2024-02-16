@@ -19,6 +19,20 @@ const userSchema = mongoose.Schema({
     tags: {
         type: [String],
     },
+    subscription: {
+        plan: {
+            type: String,
+            enum: ['free', 'silver', 'gold'],
+            default: 'free'
+        },
+        questionsPostedToday: {
+            type: Number,
+            default: 0
+        },
+        subscriptionEnd: {
+            type: Date
+        }
+    },
     joinedOn: {
         type: Date,
         default: Date.now

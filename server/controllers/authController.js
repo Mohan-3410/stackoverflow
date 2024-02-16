@@ -18,7 +18,7 @@ const signupController = async (req, res) => {
         const user = await User.create({ name, email, password: hashedPassword });
 
         const token = jwt.sign({ email: user.email, id: user._id }, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-            expiresIn: '1hr'
+            expiresIn: '1d'
         })
         return res.status(200).json({ result: user, token })
     } catch (e) {
@@ -43,7 +43,7 @@ const loginController = async (req, res) => {
         }
 
         const token = jwt.sign({ email: user.email, id: user._id }, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-            expiresIn: '1hr'
+            expiresIn: '1d'
         })
         return res.status(200).json({ result: user, token })
     } catch (e) {
@@ -77,7 +77,14 @@ const updateUserController = async (req, res) => {
         return res.status(405).json({ message: e.message })
     }
 }
+
+const updatedSubscribedUserController = async (req, res) => {
+    const userId = req.userId
+    const user = await User.findById(userId);
+    return res.send(user)
+}
 module.exports = {
+    updatedSubscribedUserController,
     updateUserController,
     getAllUsersController,
     signupController,

@@ -3,6 +3,7 @@ import "./AskQuestion.css";
 import { useDispatch, useSelector } from "react-redux";
 import { askQuestion } from "../../redux/slices/questionSlice";
 import { useNavigate } from "react-router-dom";
+import { axiosClient } from "../../utils/axiosClient";
 
 function AskQuestion() {
   const [questionTitle, setQuestionTitle] = useState("");
@@ -12,9 +13,19 @@ function AskQuestion() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const User = useSelector(state => state.authReducer.currentUser)
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User.result._id, navigate }))
+    const response = await axiosClient.get("/auth/update-user");
+    if (response.data.subscription.plan === "free" && response.data.subscription.questionsPostedToday === 1) {
+      alert("Your free limit is exceed please subscribe");
+      navigate('/subscribe')
+    }
+    else if (response.data.subscription.plan === "silver" && response.data.subscription.questionsPostedToday === 5) {
+      alert("Your silver plan limit is exceede please come again tomorrow");
+    }
+    else {
+      dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User.result._id, navigate }))
+    }
   }
 
   return (

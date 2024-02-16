@@ -1,6 +1,8 @@
 .ask-question {
   min-height: 80vh;
-  background-color: #f1f2f3;
+  background-color: var(--primary);
+  background-image: var(--cloud-image);
+  animation: cloudAnimation 60s linear infinite alternate-reverse;
 }
 
 .ask-ques-container {
@@ -15,10 +17,10 @@
 
 .ask-ques-container form .ask-form-container {
   padding: 20px;
-  background-color: white;
+  background-color: var(--common-form-bg);
   border-radius: 3px;
-  box-shadow: 0 10px 25px rgb(0 0 0 / 5%), 0 20px 48px rgb(0 0 0 / 5%),
-    0 1px 4px rgb(0 0 0 / 10%);
+  box-shadow: 0 10px 25px var(--box-shadow), 0 20px 48px var(--box-shadow),
+    0 1px 4px var(--box-shadow-light);
 }
 
 .ask-form-container label h4 {
@@ -34,7 +36,7 @@
 .ask-form-container label input,
 .ask-form-container label textarea {
   padding: 10px;
-  border: solid 1px #0000003e;
+  border: solid 1px var(--input-border);
   font-family: "Roboto", sans-serif;
   width: calc(100% - 20px);
   resize: none;
@@ -43,13 +45,13 @@
 .review-btn {
   margin: 50px 0px;
   padding: 10px;
-  background-color: #009dff;
-  border: solid 1px #009dff;
-  color: white;
+  background-color: var(--accent);
+  border: solid 1px var(--accent);
+  color: var(--secondary);
   border-radius: 4px;
   cursor: pointer;
   transition: 0.3s;
 }
 .review-btn:hover {
-  background-color: #0086d8;
+  background-color: var(--accent_hover);
 }

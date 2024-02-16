@@ -1,17 +1,37 @@
 const Questions = require("../models/Questions")
 const mongoose = require("mongoose");
+const User = require("../models/User");
 
 const askQuestionController = async (req, res) => {
     try {
+        const userId = req.userId;
+        const user = await User.findById(userId);
+
+        if (user.subscription.plan !== 'free' && (!user.subscription.subscriptionEnd || user.subscription.subscriptionEnd < new Date())) {
+            return res.status(403).json({ message: `Subscription expired. Please renew your ${user.subscription.plan} plan.` });
+        }
+
+        const { plan, questionsPostedToday } = user.subscription;
+        const maxQuestionsPerDay = plan === 'free' ? 1 : plan === 'silver' ? 5 : Infinity;
+
+        if (questionsPostedToday >= maxQuestionsPerDay) {
+            return res.status(403).json({ message: `Daily limit reached for ${plan} plan` });
+        }
+
         const postQuestionData = req.body;
-        const postQuestion = new Questions(postQuestionData)
-        await postQuestion.save()
-        return res.status(200).json("posted a question successfully")
+        const postQuestion = new Questions(postQuestionData);
+        await postQuestion.save();
+
+        user.subscription.questionsPostedToday += 1;
+        await user.save();
+
+        return res.status(200).json({ message: "Posted a question successfully" });
     }
     catch (e) {
-        return res.status(409).json("couldn't post a new question")
+        return res.status(409).json({ message: "Couldn't post a new question" });
     }
 }
+
 
 const getAllQuestionController = async (req, res) => {
     try {

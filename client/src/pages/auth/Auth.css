@@ -1,7 +1,7 @@
 .auth-section {
   min-height: 100vh;
   margin: 0% auto;
-  background-color: #f1f2f3;
+  background-color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,13 +27,13 @@
 .auth-container-2 form {
   width: 100%;
   padding: 20px;
-  background-color: white;
+  background-color: var(--common-form-bg);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  box-shadow: 0 10px 25px rgb(0 0 0 / 5%), 0 20px 48px rgb(0 0 0 / 5%),
-    0 1px 4px rgb(0 0 0 / 10%);
+  box-shadow: 0 10px 25px var(--box-shadow), 0 20px 48px var(--box-shadow),
+    0 1px 4px var(--box-shadow-light);
 }
 
 .auth-container-2 form p {
@@ -43,7 +43,7 @@
 .auth-container-2 form label input {
   padding: 10px;
   width: calc(100% - 30px);
-  border: solid 1px #0000003e;
+  border: solid 1px var(--input-border);
   font-size: 13px;
 }
 
@@ -66,9 +66,9 @@
 .auth-btn {
   margin-top: 10px;
   padding: 10px 5px;
-  background-color: #009dff;
-  border: solid 1px #009dff;
-  color: white;
+  background-color: var(--accent);
+  border: solid 1px var(--accent);
+  color: var(--common-form-bg);
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
@@ -77,12 +77,12 @@
 }
 
 .auth-btn:hover {
-  background-color: #018ce3;
+  background-color: var(--submit-bg);
 }
 
 .handle-switch-btn {
   background-color: transparent;
-  color: #007ac6;
+  color: var(--submit-hover-bg);
   border: none;
   font-size: 13px;
   cursor: pointer;

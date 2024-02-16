@@ -42,6 +42,7 @@ export const askQuestion = createAsyncThunk("questions/Ask", async ({ questionTi
         navigate('/')
         return response.data;
     } catch (e) {
+
         return console.log({ error: e.message })
     }
 })

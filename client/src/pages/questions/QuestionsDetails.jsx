@@ -110,7 +110,7 @@ function QuestionsDetails() {
                   <p>
                     Browse other Question tagged
                     {
-                      question.questionTags.map(tag => <Link to="/tag" key={tag} className='ans-tags'>{tag}</Link>)
+                      question.questionTags.map(tag => <Link to="/Tags" key={tag} className='ans-tags'>{tag}</Link>)
                     } or
                     <Link to='/AskQuestion' style={{ textDecoration: "none", color: "#009dff" }}> ask your own question.</Link>
                   </p>

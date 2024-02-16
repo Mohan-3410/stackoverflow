@@ -17,7 +17,7 @@
 
 .tag {
   padding: 10px;
-  border: solid 1px #d2d2d2;
+  border: solid 1px var(--border);
   border-radius: 2px;
 }
 
@@ -25,12 +25,12 @@
   display: inline-block;
   margin: 10px 0px;
   padding: 5px 5px;
-  background-color: #e1ecf4;
-  color: #39739d;
+  background-color: var(--tags-bg);
+  color: var(--tags-text);
 }
 
 .tag p {
   font-size: 14px;
-  color: #323232;
+  color: var(--tags-h1);
   line-height: 17px;
 }

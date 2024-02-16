@@ -15,30 +15,30 @@
   padding-left: 20px;
 }
 .user-name p {
-  color: #7e7e7e;
+  color: var(--editprofile-border);
 }
 .edit-profile-btn {
   padding: 8px 10px;
-  border: solid 1px #7e7e7e;
+  border: solid 1px var(--editprofile-border);
   border-radius: 2px;
-  background-color: white;
+  background-color: var(--common-form-bg);
   cursor: pointer;
   transition: 0.3s;
 }
 .edit-profile-btn:hover {
-  background-color: #f5f9fc;
+  background-color: var(--edit-hover-bg);
 }
 .edit-profile-title {
   padding: 20px 0px;
-  border-bottom: solid 1px #dbd9d9;
+  border-bottom: solid 1px var(--userdetails-border);
 }
 .edit-profile-title-2 {
-  color: grey;
+  color: var(--editprofile-border);
   font-weight: 400;
 }
 .edit-profile-form {
   padding: 20px;
-  border: solid 1px #dbd9d9;
+  border: solid 1px var(--userdetails-border);
   border-radius: 5px;
 }
 .edit-profile-form label h3 {
@@ -53,14 +53,14 @@
 .edit-profile-form label textarea {
   padding: 5px;
   margin-bottom: 20px;
-  border: solid 1px #dbd9d9;
+  border: solid 1px var(--userdetails-border);
   width: 50%;
 }
 
 .user-submit-btn {
   padding: 14px 10px;
-  background-color: #0a95ff;
-  color: white;
+  background-color: var(--submit-bg);
+  color: var(--common-form-bg);
   border: none;
   border-radius: 5px;
   transition: 0.2s;
@@ -68,12 +68,12 @@
 }
 
 .user-submit-btn:hover {
-  background-color: #0074cc;
+  background-color: var(--submit-hover-bg);
 }
 
 .user-cancel-btn {
   padding: 14px 10px;
-  color: #0a95ff;
+  color: var(--submit-bg);
   background-color: transparent;
   border: none;
   margin-left: 10px;
