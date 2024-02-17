@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Navbar.css"
 import { Link, useNavigate } from 'react-router-dom'
 // import logo from '../../assets/logo.png'
@@ -8,11 +8,15 @@ import Avatar from '../avatar/Avatar'
 import { jwtDecode } from "jwt-decode"
 import { useDispatch, useSelector } from 'react-redux'
 import { login, setCurrentUser } from '../../redux/slices/authSlice'
+import { MdOutlineMenu } from "react-icons/md";
+import MobileSideView from '../leftSideBar/MobileSideBar'
+
 function Navbar({ onClick }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const User = useSelector(state => state.authReducer.currentUser)
   const currentUser = JSON.parse(localStorage.getItem('Profile'));
+  const [openSideview, setOpenSideView] = useState(false)
 
   const handleLogout = () => {
     localStorage.clear();
@@ -35,8 +39,12 @@ function Navbar({ onClick }) {
 
   return (
     <nav className="main-nav">
+      {openSideview && <div style={{ position: "absolute", top: 0, transition: "all ease 300ms" }}>
+        <MobileSideView onClose={setOpenSideView} />
+      </div>}
       <div className="navbar">
         <div className="navbar-1">
+          <div className="menubar" onClick={() => setOpenSideView(true)}><MdOutlineMenu /></div>
           <Link to='/' className='nav-item nav-logo'>
             <img src={icon} alt="logo" width='40' height='40' />
             <p>stack<b>overflow</b></p>

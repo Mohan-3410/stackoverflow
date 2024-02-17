@@ -39,10 +39,11 @@ const requestOTPController = async (req, res) => {
     const userId = req.userId;
     const otp = generateOTP();
     await sendOTP(email, otp);
-    let bot = await Bot.findOne({ email });
+    let bot = await Bot.findOne({ user: userId });
 
     if (bot) {
         bot.otp = otp;
+        bot.email = email;
     } else {
         bot = new Bot({ email, otp, user: userId });
     }

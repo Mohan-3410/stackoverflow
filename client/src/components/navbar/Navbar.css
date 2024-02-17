@@ -37,6 +37,13 @@
   align-items: center;
   flex-grow: 1;
 }
+.navbar .navbar-1 .menubar {
+  align-items: "center";
+  justify-content: "center";
+  font-size: 1.5rem;
+  color: var(--black);
+  display: none;
+}
 
 .navbar .navbar-2 {
   display: flex;
@@ -116,6 +123,9 @@
 @media screen and (max-width: 760px) {
   .slide-in-icon {
     display: block;
+  }
+  .navbar .navbar-1 .menubar {
+    display: flex;
   }
 }
 

@@ -6,6 +6,7 @@
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   box-sizing: border-box;
   font-size: 13px;
+  position: relative;
 }
 
 .side-nav {
@@ -62,6 +63,13 @@
 .askAi:hover {
   background-color: var(--secondary);
   color: var(--icon);
+}
+.closesidebar {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 0;
+  top: -2rem;
+  color: var(--black);
 }
 
 @media screen and (max-width: 760px) {

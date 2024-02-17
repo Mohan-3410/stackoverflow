@@ -18,7 +18,6 @@ function App() {
   const handleDarkMode = () => {
     document.body.classList.toggle('cloudy');
   };
-  const User = useSelector(state => state.authReducer.auth)
   return (
     <div className='App'>
       <HashRouter>
