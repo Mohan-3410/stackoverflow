@@ -22,7 +22,6 @@ function MobileSideView({ onClose }) {
         }
     }
     const handleClose = () => {
-        handleChatBot();
         onClose(false)
     }
 
@@ -56,7 +55,7 @@ function MobileSideView({ onClose }) {
                         </NavLink>
                     </div>
                 </div>
-                <button className='askAi' onClick={handleClose}>Ask AI</button>
+                <button className='askAi' onClick={handleChatBot}>Ask AI</button>
             </div>
         </>
     )

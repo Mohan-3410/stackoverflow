@@ -39,7 +39,7 @@ function Navbar({ onClick }) {
 
   return (
     <nav className="main-nav">
-      {openSideview && <div style={{ position: "absolute", top: 0, transition: "all ease 300ms" }}>
+      {openSideview && <div style={{ position: "absolute", top: 0, right: 0, transition: "all ease 300ms" }}>
         <MobileSideView onClose={setOpenSideView} />
       </div>}
       <div className="navbar">
