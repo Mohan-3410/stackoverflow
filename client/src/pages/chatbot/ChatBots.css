@@ -70,4 +70,5 @@
 .bot-message {
   background-color: var(--secondary);
   border: 1px solid var(--black);
+  overflow-x: scroll;
 }

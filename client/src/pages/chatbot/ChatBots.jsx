@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ChatBots.css"
 import { axiosClient } from "../../utils/axiosClient";
-
+import Markdown from "react-markdown"
 const ChatBot = () => {
     const [messages, setMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +71,9 @@ const ChatBot = () => {
                                 className={`message ${message.role === "user" ? "user-message" : "bot-message"}`}
                                 key={index}
                             >
-                                <p>{message.content}</p>
+                                <Markdown>
+                                    {message.content || ""}
+                                </Markdown>
                             </div>
                         ))}
                     </div>

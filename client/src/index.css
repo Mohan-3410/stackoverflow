@@ -162,8 +162,21 @@ body {
 input,
 button,
 textarea {
-  background-color: var(--common-form-bg); /* Replace with your desired color */
+  background-color: var(--common-form-bg);
   color: var(--black);
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--common-form-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--icon);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

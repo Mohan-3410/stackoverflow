@@ -30,6 +30,11 @@ const chatBotController = async (req, res) => {
     const openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
     });
+
+    const instuctionMessage = {
+        role: "system",
+        content: "You are a questions and answer bot. You must answer all the technical questions"
+    }
     try {
 
         const { messages } = req.body;
@@ -40,7 +45,7 @@ const chatBotController = async (req, res) => {
             return res.status(403).json("Messages are required", { status: 400 });
         }
         const response = await openai.chat.completions.create({
-            messages,
+            messages: [instuctionMessage, ...messages],
             model: "gpt-3.5-turbo",
         });
         return res.json(response.choices[0].message);
