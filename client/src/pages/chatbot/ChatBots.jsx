@@ -1,11 +1,22 @@
-import React, { useState } from "react";
-import "./ChatBots.css"
+import React, { useState, useEffect, useRef } from "react";
+import "./ChatBots.css";
 import { axiosClient } from "../../utils/axiosClient";
-import Markdown from "react-markdown"
+import Markdown from "react-markdown";
+
 const ChatBot = () => {
     const [messages, setMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [prompt, setPrompt] = useState("");
+    const messagesEndRef = useRef(null);
+
+    useEffect(() => {
+        // Scroll to the bottom of the conversation content whenever messages change
+        scrollToBottom();
+    }, [messages]);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     async function onSubmit(event) {
         event.preventDefault();
@@ -38,28 +49,7 @@ const ChatBot = () => {
                 <p>Best AI chatbot for Question and Answer</p>
             </div>
             <div className="conversation-content">
-                <div className="conversation-form">
-                    <form
-                        onSubmit={onSubmit}
-                        className="conversation-form-grid"
-                    >
-                        <div className="form-input">
-                            <input
-                                disabled={isLoading}
-                                placeholder="Type technical questions here..."
-                                value={prompt}
-                                onChange={(e) => setPrompt(e.target.value)}
-                            />
-                        </div>
-                        <button className="form-button">Ask</button>
-                    </form>
-                </div>
                 <div className="conversation-messages">
-                    {isLoading && (
-                        <div className="loading-message">
-                            AI is thinking...
-                        </div>
-                    )}
                     {messages.length === 0 && !isLoading && (
                         <div className="empty-message">
                             No conversation started
@@ -77,6 +67,28 @@ const ChatBot = () => {
                             </div>
                         ))}
                     </div>
+                    <div ref={messagesEndRef} />
+                </div>
+                {isLoading && (
+                    <div className="loading-message">
+                        AI is thinking...
+                    </div>
+                )}
+                <div className="conversation-form">
+                    <form
+                        onSubmit={onSubmit}
+                        className="conversation-form-grid"
+                    >
+                        <div className="form-input">
+                            <input
+                                disabled={isLoading}
+                                placeholder="Type technical questions here..."
+                                value={prompt}
+                                onChange={(e) => setPrompt(e.target.value)}
+                            />
+                        </div>
+                        <button className="form-button">Ask</button>
+                    </form>
                 </div>
             </div>
         </div>
