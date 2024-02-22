@@ -29,17 +29,47 @@
 }
 
 .s-button {
-  background-color: var(--accent);
+  background-color: var(--submit-bg);
   color: white;
-  border: none;
-  border-radius: 5px;
   padding: 10px 20px;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+}
+
+.s-button:disabled {
+  background-color: var(--submit-bg);
+  color: white;
+  cursor: not-allowed;
+  position: relative;
 }
 
 .s-button:hover {
   background-color: var(--accent_hover);
+}
+
+.currentplan {
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.currentplan p {
+  margin: 5px 0;
+}
+
+.currentplan h3 {
+  display: inline;
+  color: var(--black);
+}
+
+.currentplan strong {
+  color: var(--textcolor);
 }
 
 @media screen and (max-width: 660px) {
